@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/X-admin/css/font.css">
+	<link rel="stylesheet" href="/X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+    <script src="/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
+
+</head>
+<body>
+    <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo"><a href="./index.html">后台管理系统</a></div>
+        <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
+        <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+            
+            <a href="javascript:;">您的角色id：{$Think.session.role}</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+              <dd><a href="logout">退出</a></dd>
+            </dl>
+          </li>
+         
+        </ul>
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+    <div class="wrapper">
+        <!-- 左侧菜单开始 -->
+        <div class="left-nav">
+          <div id="side-nav">
+            <ul id="nav">
+                <li class="list" current>
+                    <a href="./index.html">
+                        <i class="iconfont">&#xe761;</i>
+                        欢迎页面
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe70b;</i>
+                        人员管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="./guanliyuan.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                管理员列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./yonghu.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                用户列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./dele.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                用户删除
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./glyguanli.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                管理员管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./rychaxun.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                人员查询
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </li>
+                <li class="list" >
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6a3;</i>
+                        商品管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="./sushe.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品列表
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="./delsushe.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品修改
+                            </a>
+                        </li>
+                    </ul>
+                     <ul class="sub-menu">
+                        <li>
+                            <a href="./spchaxun.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品查询
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list" >
+                    <a href="./change.html">
+                        <i class="iconfont">&#xe6a3;</i>
+                        修改密码
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                </li>
+                 <li class="list" >
+                    <a href="./log.html">
+                        <i class="iconfont">&#xe6a3;</i>
+                        查看操作记录
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                </li>
+              
+               
+                
+            </ul>
+          </div>
+        </div>
+        <!-- 左侧菜单结束 -->
+        <!-- 右侧主体开始 -->
+        <div class="page-content">
+          <div class="content">
+       
+           
+           <table class="layui-table" action="index">
+                <thead>
+                    <tr>
+                        <th>日志ID</th>
+                        <th>操作人姓名</th>
+                        <th>操作人权限</th>
+                        <th>操作内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {volist name="lists" id="vo"}
+                    <tr>
+                        <th>{$vo.logid}</th>
+                        <th>{$vo.username}</th>
+                        <th>{$vo.role}</th>
+                        <th>{$vo.content}</th>
+                    </tr>
+                    {/volist}
+                </tbody>
+            
+            </table>
+            <!-- 右侧内容框架，更改从这里结束 -->
+          </div>
+        </div>
+        <!-- 右侧主体结束 -->
+    </div>
+    <!-- 中部结束 -->
+    <!-- 底部开始 -->
+    <div class="footer">
+        <div class="copyright" >北京大学软件与微电子学院</div>  
+    </div>
+    <!-- 底部结束 -->
+    <!-- 背景切换开始 -->
+	
+         
+   
+    <!-- 背景切换结束 -->
+   
+</body>
+</html>
